@@ -1,0 +1,3 @@
+Название: getVKid
+Автор: Anton Kuleshov
+Сайт: http://falbar.ru/
