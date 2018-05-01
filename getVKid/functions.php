@@ -1,49 +1,66 @@
 <?php
-	function is_get(){
+/**
+ * @return bool
+ */
+function is_get()
+{
+    if ($_SERVER["REQUEST_METHOD"] == "GET") {
+        return true;
+    }
 
-		if($_SERVER["REQUEST_METHOD"] == "GET"){
+    return false;
+}
 
-			return true;
-		}
+/**
+ * @return bool
+ */
+function is_post()
+{
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        return true;
+    }
 
-		return false;
-	}
+    return false;
+}
 
-	function is_post(){
+/**
+ * @return bool
+ */
+function is_ajax()
+{
+    if (isset($_SERVER["HTTP_X_REQUESTED_WITH"]) &&
+        !empty($_SERVER["HTTP_X_REQUESTED_WITH"]) &&
+        strtolower($_SERVER["HTTP_X_REQUESTED_WITH"]) == "xmlhttprequest") {
+        return true;
+    } else {
+        return false;
+    }
+}
 
-		if($_SERVER["REQUEST_METHOD"] == "POST"){
+/**
+ * @param $var
+ * @return string
+ */
+function clear_str($var)
+{
+    return trim(strip_tags($var));
+}
 
-			return true;
-		}
+/**
+ * @param $var
+ * @return int
+ */
+function clear_int($var)
+{
+    return (int)$var;
+}
 
-		return false;
-	}
-
-	function is_ajax(){
-
-		if(isset($_SERVER["HTTP_X_REQUESTED_WITH"]) &&
-		  !empty($_SERVER["HTTP_X_REQUESTED_WITH"]) &&
-		  strtolower($_SERVER["HTTP_X_REQUESTED_WITH"]) == "xmlhttprequest"){
-
-			return true;
-		}else{
-
-			return false;
-		}
-	}
-
-	function clear_str($var){
-
-		return trim(strip_tags($var));
-	}
-
-	function clear_int($var){
-
-		return (int)$var;
-	}
-
-	function check_domain($key, $domains){
-
-		return array_search($key, $domains);
-	}
-?>
+/**
+ * @param $key
+ * @param $domains
+ * @return false|int|string
+ */
+function check_domain($key, $domains)
+{
+    return array_search($key, $domains);
+}
