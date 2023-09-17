@@ -74,7 +74,6 @@ if (is_get() && isset($_GET["key"])) {
                 return null;
             };
 
-            // Запрос к серверу
             var req = getXmlHttpRequest();
 
             req.onreadystatechange = function(){

